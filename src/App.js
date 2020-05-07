@@ -7,6 +7,10 @@ class BooksApp extends React.Component {
   state = {
     showSearchPage: false,
     books: [],
+    read: "read",
+    wantToRead: "wantToRead",
+    currentlyReading: "currentlyReading",
+    shelf: "",
   };
 
   componentDidMount() {
@@ -18,6 +22,7 @@ class BooksApp extends React.Component {
   }
 
   render() {
+    const { books, read, wantToRead, currentlyReading } = this.state;
     return (
       <div className='app'>
         {this.state.showSearchPage ? (
@@ -43,11 +48,9 @@ class BooksApp extends React.Component {
               <h1>MyReads</h1>
             </div>
             <div className='list-books-content'>
-              <Shelf
-                shelfTitle={"Currently Reading"}
-                books={this.state.books}
-              />
-              <Shelf shelfTitle={"Want To Read"} books={this.state.books} />
+              <Shelf shelf={currentlyReading} books={books} />
+              <Shelf shelf={wantToRead} books={books} />
+              <Shelf shelf={read} books={books} />
             </div>
             <div className='open-search'>
               <button onClick={() => this.setState({ showSearchPage: true })}>
