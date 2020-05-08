@@ -4,11 +4,20 @@ class Book extends React.Component {
   state = {
     shelf: "",
   };
+
   componentDidMount() {
     this.setState((currState) => ({
       shelf: this.props.shelf,
     }));
   }
+
+  handleInputChange = (event) => {
+    const { value } = event.target;
+    this.setState(() => ({
+      shelf: value,
+    }));
+  };
+
   render() {
     const { id, title, authors, imageLinks } = this.props;
     return (
@@ -30,7 +39,7 @@ class Book extends React.Component {
               </div>
             </li>
             <div className='book-shelf-changer'>
-              <select>
+              <select onChange={this.handleInputChange}>
                 <option value='move' disabled>
                   Move to...
                 </option>
