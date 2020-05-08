@@ -7,22 +7,29 @@ class BooksApp extends React.Component {
   state = {
     showSearchPage: false,
     books: [],
-    read: "read",
-    wantToRead: "wantToRead",
-    currentlyReading: "currentlyReading",
+    read: [],
+    wantToRead: [],
+    currentlyReading: [],
     shelf: "",
   };
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
+      const read = books.filter((books) => books.shelf === "read");
+      const wantToRead = books.filter((books) => books.shelf === "wantToRead");
+      const currentlyReading = books.filter(
+        (books) => books.shelf === "currentlyReading"
+      );
       this.setState(() => ({
-        books,
+        read,
+        wantToRead,
+        currentlyReading,
       }));
     });
   }
 
   render() {
-    const { books, read, wantToRead, currentlyReading } = this.state;
+    const { read, wantToRead, currentlyReading } = this.state;
     return (
       <div className='app'>
         {this.state.showSearchPage ? (
@@ -48,9 +55,9 @@ class BooksApp extends React.Component {
               <h1>MyReads</h1>
             </div>
             <div className='list-books-content'>
-              <Shelf shelf={currentlyReading} books={books} />
-              <Shelf shelf={wantToRead} books={books} />
-              <Shelf shelf={read} books={books} />
+              <Shelf shelf={"currentlyReading"} books={currentlyReading} />
+              <Shelf shelf={"wantToRead"} books={wantToRead} />
+              <Shelf shelf={"read"} books={read} />
             </div>
             <div className='open-search'>
               <button onClick={() => this.setState({ showSearchPage: true })}>
