@@ -1,10 +1,6 @@
 import React from "react";
 
 class Book extends React.Component {
-  state = {
-    shelf: "",
-  };
-
   componentDidMount() {
     this.setState((currState) => ({
       shelf: this.props.shelf,

@@ -7,29 +7,47 @@ class BooksApp extends React.Component {
   state = {
     showSearchPage: false,
     books: [],
-    read: [],
-    wantToRead: [],
-    currentlyReading: [],
+    currentlyReading: "currentlyReading",
+    currentlyReadingArray: [],
+    wantToRead: "wantToRead",
+    wantToReadArray: [],
+    read: "read",
+    readArray: [],
     shelf: "",
   };
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
-      const read = books.filter((books) => books.shelf === "read");
-      const wantToRead = books.filter((books) => books.shelf === "wantToRead");
-      const currentlyReading = books.filter(
+      const readArray = books.filter((books) => books.shelf === "read");
+      const wantToReadArray = books.filter(
+        (books) => books.shelf === "wantToRead"
+      );
+      const currentlyReadingArray = books.filter(
         (books) => books.shelf === "currentlyReading"
       );
       this.setState(() => ({
-        read,
-        wantToRead,
-        currentlyReading,
+        readArray,
+        wantToReadArray,
+        currentlyReadingArray,
       }));
     });
   }
 
+  /*  componentDidUpdate() {
+RE-SORT ARRAYS
+} */
+
+  /* sort books function */
+
   render() {
-    const { read, wantToRead, currentlyReading } = this.state;
+    const {
+      currentlyReading,
+      currentlyReadingArray,
+      wantToRead,
+      wantToReadArray,
+      read,
+      readArray,
+    } = this.state;
     return (
       <div className='app'>
         {this.state.showSearchPage ? (
@@ -55,9 +73,9 @@ class BooksApp extends React.Component {
               <h1>MyReads</h1>
             </div>
             <div className='list-books-content'>
-              <Shelf shelf={"currentlyReading"} books={currentlyReading} />
-              <Shelf shelf={"wantToRead"} books={wantToRead} />
-              <Shelf shelf={"read"} books={read} />
+              <Shelf shelf={currentlyReading} books={currentlyReadingArray} />
+              <Shelf shelf={wantToRead} books={wantToReadArray} />
+              <Shelf shelf={read} books={readArray} />
             </div>
             <div className='open-search'>
               <button onClick={() => this.setState({ showSearchPage: true })}>
