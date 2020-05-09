@@ -3,51 +3,33 @@ import * as BooksAPI from "./BooksAPI";
 import "./App.css";
 import Shelf from "./Shelf";
 
-class BooksApp extends React.Component {
+class App extends React.Component {
   state = {
     showSearchPage: false,
     books: [],
-    currentlyReading: "currentlyReading",
-    currentlyReadingArray: [],
-    wantToRead: "wantToRead",
-    wantToReadArray: [],
-    read: "read",
-    readArray: [],
-    shelf: "",
+  };
+
+  changeShelf = (book, shelf) => {
+    if (this.state.books) {
+      BooksAPI.update(book, shelf).then(() => {
+        book.shelf = shelf;
+        this.setState((state) => ({
+          books: state.books.filter((b) => b.id !== book.id).concat([book]),
+        }));
+      });
+    }
   };
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
-      const readArray = books.filter((books) => books.shelf === "read");
-      const wantToReadArray = books.filter(
-        (books) => books.shelf === "wantToRead"
-      );
-      const currentlyReadingArray = books.filter(
-        (books) => books.shelf === "currentlyReading"
-      );
       this.setState(() => ({
-        readArray,
-        wantToReadArray,
-        currentlyReadingArray,
+        books,
       }));
     });
   }
 
-  /*  componentDidUpdate() {
-RE-SORT ARRAYS
-} */
-
-  /* sort books function */
-
   render() {
-    const {
-      currentlyReading,
-      currentlyReadingArray,
-      wantToRead,
-      wantToReadArray,
-      read,
-      readArray,
-    } = this.state;
+    const { books } = this.state;
     return (
       <div className='app'>
         {this.state.showSearchPage ? (
@@ -70,12 +52,24 @@ RE-SORT ARRAYS
         ) : (
           <div className='list-books'>
             <div className='list-books-title'>
-              <h1>MyReads</h1>
+              <h1>MyBookshelf</h1>
             </div>
             <div className='list-books-content'>
-              <Shelf shelf={currentlyReading} books={currentlyReadingArray} />
-              <Shelf shelf={wantToRead} books={wantToReadArray} />
-              <Shelf shelf={read} books={readArray} />
+              <Shelf
+                shelf={"currentlyReading"}
+                books={books}
+                onChangeShelf={this.changeShelf}
+              />
+              <Shelf
+                shelf={"wantToRead"}
+                books={books}
+                onChangeShelf={this.changeShelf}
+              />
+              <Shelf
+                shelf={"read"}
+                books={books}
+                onChangeShelf={this.changeShelf}
+              />
             </div>
             <div className='open-search'>
               <button onClick={() => this.setState({ showSearchPage: true })}>
@@ -89,4 +83,4 @@ RE-SORT ARRAYS
   }
 }
 
-export default BooksApp;
+export default App;
