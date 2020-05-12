@@ -62,11 +62,7 @@ class App extends React.Component {
                 </div>
                 <div className='open-search'>
                   <Link to='/search'>
-                    <button
-                      onClick={() => this.setState({ showSearchPage: true })}
-                    >
-                      Add a book
-                    </button>
+                    <button>Add a book</button>
                   </Link>
                 </div>
               </div>
