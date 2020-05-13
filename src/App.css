@@ -215,3 +215,20 @@ button:active {
   opacity: 0;
   transition: opacity 500ms ease-in;
 }
+
+.bookshelf {
+  background: url("./img/wooden-background.jpg");
+}
+
+.list-books {
+  background: #000;
+}
+
+.bookshelf-title {
+  color: #fff;
+}
+
+.book-title {
+  color: #fff;
+  font-size: 18px;
+}
