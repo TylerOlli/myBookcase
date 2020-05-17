@@ -15,10 +15,27 @@ body,
 
 /* main page */
 
+.list-books {
+  background: #0f0c29; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #24243e,
+    #302b63,
+    #0f0c29
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #24243e,
+    #302b63,
+    #0f0c29
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 .list-books-title {
   padding: 10px 0;
-  background: #2e7c31;
   text-align: center;
+  color: #fff;
+  background: #1da1f2;
 }
 
 .list-books-title h1 {
@@ -34,6 +51,19 @@ body,
 
 .bookshelf {
   padding: 0 10px 20px;
+  background: #0f0c29; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #24243e,
+    #302b63,
+    #0f0c29
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #24243e,
+    #302b63,
+    #0f0c29
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 @media (min-width: 600px) {
@@ -43,7 +73,7 @@ body,
 }
 
 .bookshelf-title {
-  border-bottom: 1px solid #dedede;
+  color: #fff;
 }
 
 .bookshelf-books {
@@ -61,7 +91,7 @@ body,
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #2e7d32;
+  background: #657786;
   background-image: url("./icons/add.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -72,7 +102,7 @@ body,
 }
 
 .open-search button:hover {
-  background-color: rgb(0, 102, 0);
+  background-color: #aab8c2;
 }
 
 /* search page */
@@ -89,7 +119,7 @@ body,
 
 .search-books-input-wrapper {
   flex: 1;
-  background: #e9e;
+  background: #1da1f2;
 }
 
 .search-books-bar input {
@@ -149,6 +179,11 @@ button:active {
   font-size: 0.8em;
 }
 
+.bookshelf .book-title {
+  color: #fff;
+  font-size: 18px;
+}
+
 .book-title {
   margin-top: 10px;
 }
@@ -171,7 +206,7 @@ button:active {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #60ac5d;
+  background: #1da1f2;
   background-image: url("./icons/arrow-drop-down.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -197,25 +232,6 @@ button:active {
   padding: 20px 10px 0;
   text-align: center;
   font-size: 0.8em;
-}
-
-/* Extra Styles */
-
-.bookshelf {
-  background: url("./img/wooden-background.jpg");
-}
-
-.list-books {
-  background: #000;
-}
-
-.bookshelf-title {
-  color: #fff;
-}
-
-.book-title {
-  color: #fff;
-  font-size: 18px;
 }
 
 /* CSSTransition Styles for Books */
