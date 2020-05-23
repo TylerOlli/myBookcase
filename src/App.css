@@ -263,28 +263,20 @@ button:active {
   transition: all 800ms ease-in-out;
 }
 .pageSliderLeft-exit {
-  transform: translate3d(0, 0, 0);
+  opacity: 0;
   z-index: 1;
 }
 .pageSliderLeft-exit.pageSliderLeft-exit-active {
-  transform: translate3d(100%, 0, 0);
+  opacity: 1;
   transition: all 600ms;
 }
 
 /* Right */
 .pageSliderRight-enter {
-  transform: translate3d(-100%, 0, 0);
+  opacity: 0;
   z-index: 10;
 }
 .pageSliderRight-enter.pageSliderRight-enter-active {
-  transform: translate3d(0, 0, 0);
+  opacity: 0;
   transition: all 800ms ease-in-out;
-}
-.pageSliderRight-exit {
-  transform: translate3d(0, 0, 0);
-  z-index: 1;
-}
-.pageSliderRight-exit.pageSliderRight-exit-active {
-  transform: translate3d(-100%, 0, 0);
-  transition: all 600ms;
 }
