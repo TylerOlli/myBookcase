@@ -28,7 +28,7 @@ class Shelf extends React.Component {
                     in={this.state.mounted}
                     timeout={500}
                     key={book.id}
-                    classNames='book'
+                    classNames='fade'
                   >
                     <Book
                       onChangeShelf={this.props.onChangeShelf}

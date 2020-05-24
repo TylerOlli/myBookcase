@@ -35,15 +35,7 @@ class App extends React.Component {
     const { location, history } = this.props;
     return (
       <TransitionGroup>
-        <CSSTransition
-          key={location.key}
-          classNames={
-            history.location.pathname === "/"
-              ? "pageSliderLeft"
-              : "pageSliderRight"
-          }
-          timeout={1000}
-        >
+        <CSSTransition key={location.key} classNames={"fade"} timeout={1000}>
           <Switch history={history}>
             <Route
               exact
