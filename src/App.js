@@ -44,7 +44,7 @@ class App extends React.Component {
                 <div className='app'>
                   <div className='list-books'>
                     <div className='list-books-title'>
-                      <h1>MyBookshelf</h1>
+                      <h1>MyBookcase</h1>
                     </div>
                     <div className='list-books-content'>
                       <Shelf
