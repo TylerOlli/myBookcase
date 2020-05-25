@@ -1,4 +1,4 @@
-# myBookcase  
+# MyBookcase  
 Browse from a selection of books and add to a virtual bookcase  
 Live version here - https://mybookcase.io/
 
